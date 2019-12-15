@@ -1,6 +1,9 @@
 # C9
 .c9
 
+# Database Info.
+DB.md
+
 # Logs
 logs
 *.log
