@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <data style="display:none"></data>
+    </head>
+    
+    <body>
+    
+        <div class="modal fade" id="loginForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title-container">
+                            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <img src="img/login.jpg" alt="login" class="login-icon">
+                    </div>
+                    <div id="tc-modal-body" class="modal-body">
+                        <input type="text" id="LI_username" placeholder="Enter Username" name="username">
+                        <input class="form-control" id="LI_password" type="password" name="password" placeholder="Enter Password">
+                        <button type="submit" id="submit-login-button">Login</button>
+                        <label>
+                            <input type="checkbox" checked="checked" name="remember"> Remember me
+                        </label>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-toggle="modal" data-target="#loginForm" class="cancelbtn">Cancel</button>
+                        <span class="new-here" data-toggle="modal" data-target="#createAccountForm">New here? <a href="#">Create Account</a> </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <div class="modal fade" id="createAccountForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title-container">
+                            <h5 class="modal-title" id="exampleModalLabel">Create Account</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <img src="img/login.jpg" alt="login-icon" class="login-icon">
+                    </div>
+                    <div id="tc-modal-body" class="modal-body">
+                        <input type="text" id="CA_fname" placeholder="Enter first name" name="fname">
+                        <input type="text" id="CA_lname" placeholder="Enter last name" name="lname">
+                        <input type="text" id="CA_username" placeholder="Enter Username" name="username">
+                        <input type="password" id="CA_password" placeholder="Enter Password" name="password">
+                        <button type="submit" id="create-account-button">Create Account</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-toggle="modal" data-target="#createAccountForm" class="cancelbtn">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div id="page-container">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="#"> {{title}} </a>
+                <marquee id="intro" direction="left"><big><i>Final Exam for CST 336, Internet Programming, made by Joseph Villegas - Fall 2019</i></big></marquee>
+                <div class="form-inline">
+                    <div id="login-button">
+                        <input type="image" 
+                            src="img/login_icon.png" 
+                            name="loginButton" 
+                            class="btTxt submit" 
+                            data-toggle="modal" data-target="#loginForm"/>
+                    </div>
+                </div>
+            </nav>
+            <div id="body-container">
+                <div style="margin-top: 30px"><p class="text-center">Find Your Next Appointment</p></div>
+                <div id="search-container">
+                    <div id="searchBar" style="margin:auto;max-width:800px">
+                        <input type="date" name="search-field" id="search-field">
+                        <button type="submit" id="search-button"><i class="fa fa-search"></i></button>
+                    </div> 
+                </div>
+                <div class="container-fluid" style="height: 100%; width: 100%; margin-top: 30px;"></div>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        
+        <script src="js/functions.js"></script>
+
+    </body>
+</html>
+

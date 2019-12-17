@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{title}}</title>
+        <meta charset="utf-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link href="css/styles.css" rel="stylesheet" type="text/css" />
+        <data style="display:none"></data>
+        <style>
+            body {font-family: Arial;}
+            
+            /* Style the tab */
+            .tab {
+              overflow: hidden;
+              border: 1px solid #ccc;
+              background-color: #f1f1f1;
+            }
+            
+            /* Style the buttons inside the tab */
+            .tab button {
+              background-color: inherit;
+              float: left;
+              border: none;
+              outline: none;
+              cursor: pointer;
+              padding: 14px 16px;
+              transition: 0.3s;
+              font-size: 17px;
+            }
+            
+            /* Change background color of buttons on hover */
+            .tab button:hover {
+              background-color: #ddd;
+            }
+            
+            /* Create an active/current tablink class */
+            .tab button.active {
+              background-color: #ccc;
+            }
+            
+            /* Style the tab content */
+            .tabcontent {
+              display: none;
+              padding: 6px 12px;
+              border: 1px solid #ccc;
+              border-top: none;
+            }
+        </style>
+        <style>
+/* Full-width input fields */
+input[type=date], input[type=time] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+#btn1, #btn3 {
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+#btn1:hover {
+  opacity: 0.8;
+}
+
+#btn2:hover {
+  opacity: 0.8;
+}
+
+#btn3:hover {
+  opacity: 0.8;
+}
+
+#btn4:hover {
+  opacity: 0.8;
+}
+
+/* Extra styles for the cancel button */
+.cancelbtn {
+  width: 100%;
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+/* Center the image and position the close button */
+.closecontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+  position: relative;
+}
+
+.container {
+  padding: 16px;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button (x) */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: red;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)} 
+  to {-webkit-transform: scale(1)}
+}
+  
+@keyframes animatezoom {
+  from {transform: scale(0)} 
+  to {transform: scale(1)}
+}
+
+</style>
+    </head>
+    <body>
+        <div id="page-container">
+            <nav class="navbar navbar-light bg-light">
+                <a class="navbar-brand" href="#"> {{title}} </a>
+                <marquee id="intro" direction="left"><big><i>Final Exam for CST 336, Internet Programming, made by Joseph Villegas - Fall 2019</i></big></marquee>
+                <div class="form-inline">
+                    <div id="logout-button">
+                        <input type="image" 
+                            src="img/login_icon.png" 
+                            name="logoutButton" 
+                            class="btTxt submit"/>
+                    </div>
+                </div>
+            </nav>
+            <div id="body-container">
+                {{welcome}}
+                
+                <h2>Appointment Manager</h2>
+                
+                <div class="tab">
+                  <button class="tablinks" onclick="openTab(event, 'personalAppointments')">Personal Appointments</button>
+                  <button class="tablinks" onclick="openTab(event, 'bussinessAppointments'); showBussinessAppointments();">Bussiness Appointments</button>
+                </div>
+                
+                <div id="personalAppointments" class="tabcontent">
+                  <h3>Personal Appointments</h3>
+                  <p>These are the appointments you booked for yourself.</p>
+                  <div id="personalAppointmentsTable"></div>
+                </div>
+                
+                <div id="bussinessAppointments" class="tabcontent">
+                  <h3>Bussiness Appointments</h3>
+                  <p>These are the appointments others booked to meet you.</p> 
+                  <div id="bussinessAppointmentsTable"></div>
+                </div>
+                
+            </div>
+            <div class="modal fade" id="detailsModal" tabindex="-1" role="dialog" aria-labelledby="detailsModal" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Appointment Details</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="appointmentID">Appointment ID</label>
+                                    <input type="text" class="form-control" id="appointmentID" aria-describedby="appointmentID" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="appointmentDate">Appointment Date</label>
+                                    <input type="text" class="form-control" id="appointmentDate" aria-describedby="appointmentDate" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="appointmentStartTime">Appointment Start Time</label>
+                                    <input type="text" class="form-control" id="appointmentStartTime" aria-describedby="appointmentStartTime" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="appointmentEndTime">Appointment End Time</label>
+                                    <input type="text" class="form-control" id="appointmentEndTime" aria-describedby="appointmentEndTime" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label for="appointmentBookedBy">Appointment Booked By</label>
+                                    <input type="text" class="form-control" id="appointmentBookedBy" aria-describedby="appointmentBookedBy" readonly>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+            <div id="add" class="modal">
+              <form class="modal-content animate" action="#" method="post">
+                <div class="closecontainer">
+                  <span onclick="document.getElementById('add').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
+            
+                <div class="container">
+                  <label for="appointmentDate"><b>Appointment Date</b></label>
+                  <input type="date" id="date" required>
+                  
+                  <label for="startTime"><b>Start Time</b></label>
+                  <input type="time"  id="startTime" required>
+            
+                 <label for="endTime"><b>End Time</b></label>
+                  <input type="time"  id="endTime" required>
+                  
+                  <button type="submit" id="btn1">Add</button>
+                  <button type="button" id="btn2" onclick="document.getElementById('add').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+              </form>
+            </div>
+            
+            <div id="delete" class="modal">
+              <form class="modal-content animate" action="#" method="post">
+                <div class="closecontainer">
+                  <span onclick="document.getElementById('delete').style.display='none'" class="close" title="Close Modal">&times;</span>
+                </div>
+            
+                <div class="container">
+                  <div id="del_date">Date </div>
+                  <div id="del_startTime">Start Time </div>
+                  <div id="del_endTime">End Time </div>
+                  
+                  <button type="submit" id="btn3">Yes, Remove It!</button>
+                  <button type="button" id="btn4" onclick="document.getElementById('delete').style.display='none'" class="cancelbtn">Cancel</button>
+                </div>
+              </form>
+            </div>
+
+        </div>
+        <script src="js/functions.js"></script>
+    </body>
+<html>
+    
+    
+
+
+
